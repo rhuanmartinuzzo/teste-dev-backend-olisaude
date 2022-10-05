@@ -7,7 +7,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.security.Permission;
 import java.util.*;
 
 
@@ -65,15 +64,15 @@ public class User implements UserDetails, Serializable {
         List<String> roles = new ArrayList<>();
 
         for (Permission permission: permissions){
-            roles.add(permission.)
+            roles.add(permission.getDescription());
         }
-
+        return roles;
     }
 
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return this.permission;
+        return this.permissions;
     }
 
     @Override
