@@ -4,7 +4,6 @@ package br.com.olisaude.data.vo.v1;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.github.dozermapper.core.Mapping;
-import org.springframework.hateoas.RepresentationModel;
 
 
 import java.io.Serializable;
@@ -12,7 +11,7 @@ import java.util.Date;
 import java.util.Objects;
 
 @JsonPropertyOrder({"id", "name", "birth_day", "gender", "created_at", "updated_at"})
-public class UserVO extends RepresentationModel<UserVO> implements Serializable {
+public class UserVO implements Serializable {
 
 
     private static final long serialVersionUID = -9035881742863629448L;
