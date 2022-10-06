@@ -1,10 +1,16 @@
 package br.com.olisaude.exceptions;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import io.swagger.v3.oas.annotations.Hidden;
+import io.swagger.v3.oas.annotations.media.Schema;
+
 import java.io.Serializable;
 import java.util.Date;
 
 public class ExceptionResponse implements Serializable {
     private static final long serialVersionUID = -2076122951856686165L;
+
 
     private Date timestamp;
     private String message;
