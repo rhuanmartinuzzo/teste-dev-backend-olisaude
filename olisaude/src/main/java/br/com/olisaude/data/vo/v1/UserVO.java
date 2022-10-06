@@ -6,6 +6,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.github.dozermapper.core.Mapping;
 
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
@@ -19,8 +21,13 @@ public class UserVO implements Serializable {
     @Mapping("id")
     @JsonProperty("id")
     private Long key;
+    @NotBlank
+    @Size(min = 10, max = 200)
     private String name;
+    @NotBlank
     private Date birth_day;
+    @NotBlank
+    @Size(min = 4, max = 8)
     private String gender;
     private Date created_at;
     private Date updated_at;
