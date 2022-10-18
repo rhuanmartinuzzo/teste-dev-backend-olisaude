@@ -10,6 +10,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.Objects;
+import java.util.stream.DoubleStream;
 
 @JsonPropertyOrder({"id", "name", "tier", "user_id"})
 public class HealthProblemVO implements Serializable {

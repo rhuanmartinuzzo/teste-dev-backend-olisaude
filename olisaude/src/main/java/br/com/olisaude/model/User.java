@@ -3,6 +3,8 @@ package br.com.olisaude.model;
 
 
 
+import br.com.olisaude.data.vo.v1.UserVO;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;

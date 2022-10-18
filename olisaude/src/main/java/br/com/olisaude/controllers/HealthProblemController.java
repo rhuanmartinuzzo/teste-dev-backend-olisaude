@@ -41,7 +41,7 @@ public class HealthProblemController {
                     @ApiResponse(description = "Internal Error", responseCode = "500", content = @Content)
             })
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<HealthProblemVO> findAll(){return service.findAll(); };
+    public List<HealthProblemVO> findAll(){return service.findAllSI(); };
 
 
     @Operation(summary = "Finds one HealthProblem", description = "Finds one HealthProblem",
@@ -110,6 +110,8 @@ public class HealthProblemController {
         service.delete(id);
         return ResponseEntity.noContent().build();
     }
+
+
 
 
 }

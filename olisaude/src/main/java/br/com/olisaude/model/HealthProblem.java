@@ -71,4 +71,5 @@ public class HealthProblem implements Serializable {
         result = 31 * result + (user_id != null ? user_id.hashCode() : 0);
         return result;
     }
+
 }

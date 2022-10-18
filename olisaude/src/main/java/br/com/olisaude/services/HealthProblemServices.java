@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
+import java.util.Collections;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -26,13 +27,22 @@ public class HealthProblemServices {
         this.repository = repository;
     }
 
-    public List<HealthProblemVO> findAll(){
+    public List<HealthProblemVO> findAllSI(){
 
         logger.info("Finding all users");
 
         var users = DozerMapper.parseListObjects(repository.findAll(), HealthProblemVO.class);
         return users;
     }
+
+    public List<HealthProblemVO> findAllProblemById(Long id){
+        logger.info("Finding one user!");
+
+        var users = DozerMapper.parseListObjects(repository.findAllById(id), HealthProblemVO.class);
+        return users;
+    }
+
+
 
     public HealthProblemVO findById(Long id){
         logger.info("Finding one user!");

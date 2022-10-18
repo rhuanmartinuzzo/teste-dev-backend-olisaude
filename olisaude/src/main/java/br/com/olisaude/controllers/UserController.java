@@ -2,6 +2,7 @@ package br.com.olisaude.controllers;
 
 
 import br.com.olisaude.data.vo.v1.UserVO;
+import br.com.olisaude.model.HealthProblemTop;
 import br.com.olisaude.services.UserServices;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
@@ -112,4 +113,6 @@ public class UserController {
         return ResponseEntity.noContent().build();
     }
 
+    @GetMapping(value = "/topten")
+    public List<HealthProblemTop> findTopTen(){ return service.findTopTen();};
 }
