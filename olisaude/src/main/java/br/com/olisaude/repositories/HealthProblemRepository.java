@@ -13,5 +13,5 @@ import java.util.Optional;
 
 @Repository
 public interface HealthProblemRepository extends JpaRepository<HealthProblem, Long> {
-    List<HealthProblem> findAllById(Long id);
+    List<HealthProblem> findAllById(Long user_id);
 }

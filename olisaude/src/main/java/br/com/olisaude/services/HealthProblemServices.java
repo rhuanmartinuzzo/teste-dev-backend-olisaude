@@ -35,9 +35,7 @@ public class HealthProblemServices {
         return users;
     }
 
-    public List<HealthProblemVO> findAllProblemById(Long id){
-        logger.info("Finding one user!");
-
+    public List<HealthProblemVO> findAllById(Long id){
         var users = DozerMapper.parseListObjects(repository.findAllById(id), HealthProblemVO.class);
         return users;
     }

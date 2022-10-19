@@ -1,14 +1,12 @@
 package br.com.olisaude.services;
 
 
-import br.com.olisaude.controllers.UserController;
 import br.com.olisaude.data.vo.v1.UserVO;
 import br.com.olisaude.exceptions.RequiredObjectIsNullException;
 import br.com.olisaude.exceptions.ResourceNotFoundException;
 import br.com.olisaude.mapper.DozerMapper;
 import br.com.olisaude.model.HealthProblemTop;
 import br.com.olisaude.model.User;
-import br.com.olisaude.repositories.HealthProblemRepository;
 import br.com.olisaude.repositories.UserRepository;
 import br.com.olisaude.util.HealthProblemUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,12 +23,14 @@ public class UserServices {
 
 
     @Autowired
-    UserRepository repository;
-    HealthProblemServices healthProblemServices;
-    HealthProblemUtils healthProblemUtils;
+    private final UserRepository repository;
+    public final HealthProblemServices healthProblemServices;
+    public final HealthProblemUtils healthProblemUtils;
 
-    public UserServices(UserRepository repository){
+    public UserServices(UserRepository repository, HealthProblemServices healthProblemServices, HealthProblemUtils healthProblemUtils){
         this.repository = repository;
+        this.healthProblemServices = healthProblemServices;
+        this.healthProblemUtils = healthProblemUtils;
     }
 
     public List<UserVO> findAll(){
@@ -97,11 +97,10 @@ public class UserServices {
 
         for (User user : userst){
             healthLevel.add(healthProblemServices
-                    .findAllProblemById(user.getId())
+                    .findAllById(user.getId())
                     .stream()
                     .reduce(0, (total, healthProblem) -> total + Math.toIntExact(healthProblem.getTier()), Integer::sum));
         }
-        logger.info("Finding top ten users!");
 
         for (int index = 0; index < userst.size(); index+=1) {
             HealthProblemTop newHealthProblemTop = new HealthProblemTop();
