@@ -12,7 +12,7 @@ public class MockHealthProblem {
         return mockEntity(0);
     }
 
-        public HealthProblemVO mockVO() {
+    public HealthProblemVO mockVO() {
         return mockVO(0);
     }
 
