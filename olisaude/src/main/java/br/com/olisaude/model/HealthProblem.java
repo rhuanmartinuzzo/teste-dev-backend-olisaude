@@ -7,7 +7,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "health_prob")
-public class HealthProblem implements Serializable {
+public class HealthProblem implements Serializable  {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

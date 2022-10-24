@@ -92,19 +92,19 @@ public class UserServices {
         logger.info("Finding top ten users!");
 
         List<HealthProblemTop> topTen = new ArrayList<>();
-        List<User> userst = repository.findAll();
+        List<User> users = repository.findAll();
         List<Integer> healthLevel = new ArrayList<>();
 
-        for (User user : userst){
+        for (User user : users){
             healthLevel.add(healthProblemServices
                     .findAllById(user.getId())
                     .stream()
                     .reduce(0, (total, healthProblem) -> total + Math.toIntExact(healthProblem.getTier()), Integer::sum));
         }
 
-        for (int index = 0; index < userst.size(); index+=1) {
+        for (int index = 0; index < users.size(); index+=1) {
             HealthProblemTop newHealthProblemTop = new HealthProblemTop();
-            User userFromList = userst.get(index);
+            User userFromList = users.get(index);
             newHealthProblemTop.setId(userFromList.getId());
             newHealthProblemTop.setName(userFromList.getName());
             newHealthProblemTop.setScore((float) healthProblemUtils.scoreRisk(healthLevel.get(index)));
@@ -121,5 +121,8 @@ public class UserServices {
 
         return topTen.subList(0,10);
     }
+
+
+
 
 }
