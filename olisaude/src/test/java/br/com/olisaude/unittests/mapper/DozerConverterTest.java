@@ -60,7 +60,7 @@ public class DozerConverterTest {
 
     @Test
     public void parseVOToEntityTest(){
-        User output = DozerMapper.parseObject(inputObject.mockEntity(), User.class);
+        User output = DozerMapper.parseObject(inputObject.mockVO(), User.class);
         assertEquals(Long.valueOf(0L), output.getId());
         assertEquals("First Name Test0", output.getName());
         assertNotNull(output.getBirth_day());
