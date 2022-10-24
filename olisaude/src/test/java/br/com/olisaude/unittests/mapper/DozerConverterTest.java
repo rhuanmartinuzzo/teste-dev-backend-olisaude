@@ -41,15 +41,15 @@ public class DozerConverterTest {
         assertEquals("Male", outputZero.getGender());
         assertNotNull(outputZero.getCreated_at());
 
-        UserVO outputSeven = outputList.get(0);
+        UserVO outputSeven = outputList.get(7);
 
         assertEquals(Long.valueOf(7L), outputSeven.getKey());
         assertEquals("First Name Test7", outputSeven.getName());
         assertNotNull(outputSeven.getBirth_day());
-        assertEquals("Male", outputSeven.getGender());
+        assertEquals("Female", outputSeven.getGender());
         assertNotNull(outputSeven.getCreated_at());
 
-        UserVO outputTwelve = outputList.get(0);
+        UserVO outputTwelve = outputList.get(12);
 
         assertEquals(Long.valueOf(12L), outputTwelve.getKey());
         assertEquals("First Name Test12", outputTwelve.getName());
@@ -79,15 +79,15 @@ public class DozerConverterTest {
         assertEquals("Male", outputZero.getGender());
         assertNotNull(outputZero.getCreated_at());
 
-        User outputSeven = outputList.get(0);
+        User outputSeven = outputList.get(7);
 
         assertEquals(Long.valueOf(7L), outputSeven.getId());
         assertEquals("First Name Test7", outputSeven.getName());
         assertNotNull(outputSeven.getBirth_day());
-        assertEquals("Male", outputSeven.getGender());
+        assertEquals("Female", outputSeven.getGender());
         assertNotNull(outputSeven.getCreated_at());
 
-        User outputTwelve = outputList.get(0);
+        User outputTwelve = outputList.get(12);
 
         assertEquals(Long.valueOf(12L), outputTwelve.getId());
         assertEquals("First Name Test12", outputTwelve.getName());
@@ -96,5 +96,8 @@ public class DozerConverterTest {
         assertNotNull(outputTwelve.getCreated_at());
     }
 
+
+    //TODO create MockHealthProblem in DozerConverter
+    //TODO services User and HealthProblem
 
 }
