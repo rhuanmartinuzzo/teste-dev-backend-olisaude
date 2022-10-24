@@ -26,6 +26,7 @@ public class MockUser {
 
     public User mockEntity(Integer number){
         User user = new User();
+        user.setId(number.longValue());
         user.setName("First Name Test" + number);
         user.setBirth_day(new Date());
         user.setGender(((number % 2) == 0) ? "Male" : "Female");
@@ -35,6 +36,7 @@ public class MockUser {
 
     public UserVO mockVO(Integer number){
         UserVO user = new UserVO();
+        user.setKey(number.longValue());
         user.setName("First Name Test" + number);
         user.setBirth_day(new Date());
         user.setGender(((number % 2) == 0) ? "Male" : "Female");
