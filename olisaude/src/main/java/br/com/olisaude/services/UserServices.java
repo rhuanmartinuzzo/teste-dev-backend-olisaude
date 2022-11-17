@@ -1,6 +1,7 @@
 package br.com.olisaude.services;
 
 
+import br.com.olisaude.controllers.UserController;
 import br.com.olisaude.data.vo.v1.UserVO;
 import br.com.olisaude.exceptions.RequiredObjectIsNullException;
 import br.com.olisaude.exceptions.ResourceNotFoundException;
@@ -10,11 +11,13 @@ import br.com.olisaude.model.User;
 import br.com.olisaude.repositories.UserRepository;
 import br.com.olisaude.util.HealthProblemUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.stereotype.Service;
 
 import java.util.*;
 import java.util.logging.Logger;
+
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 @Service
 public class UserServices {
@@ -23,9 +26,11 @@ public class UserServices {
 
 
     @Autowired
-    private final UserRepository repository;
-    public final HealthProblemServices healthProblemServices;
-    public final HealthProblemUtils healthProblemUtils;
+    UserRepository repository;
+    @Autowired
+    HealthProblemServices healthProblemServices;
+    @Autowired
+    HealthProblemUtils healthProblemUtils;
 
     public UserServices(UserRepository repository, HealthProblemServices healthProblemServices, HealthProblemUtils healthProblemUtils){
         this.repository = repository;
@@ -34,10 +39,10 @@ public class UserServices {
     }
 
     public List<UserVO> findAll(){
-
         logger.info("Finding all users");
 
         var users = DozerMapper.parseListObjects(repository.findAll(), UserVO.class);
+        System.out.println(users);
         return users;
     }
 

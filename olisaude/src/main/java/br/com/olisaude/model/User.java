@@ -3,11 +3,8 @@ package br.com.olisaude.model;
 
 
 
-import br.com.olisaude.data.vo.v1.UserVO;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.*;
 
@@ -15,6 +12,8 @@ import java.util.*;
 @Entity
 @Table(name = "users")
 public class User implements Serializable {
+
+    private static final long serialVersionUID = 8104328113516178116L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

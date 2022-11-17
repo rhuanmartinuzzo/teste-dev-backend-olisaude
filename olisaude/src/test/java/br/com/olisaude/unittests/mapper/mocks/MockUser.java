@@ -15,21 +15,29 @@ public class MockUser {
 
     public UserVO mockVO(){return mockVO(0);}
 
-    public List<User> mockEntityList(){
-        List<User> users = new ArrayList<>();
+    public List<User> mockEntityList() {
+        List<User> persons = new ArrayList<User>();
+        for (int i = 0; i < 14; i++) {
+            persons.add(mockEntity(i));
+        }
+        return persons;
+    }
+
+    public List<UserVO> mockVOList(){
+        List<UserVO> users = new ArrayList<UserVO>();
 
         for (int i =0;i<14;i++){
-            users.add(mockEntity(i));
+            users.add(mockVO(i));
         }
         return users;
     }
 
     public User mockEntity(Integer number){
         User user = new User();
-        user.setId(number.longValue());
         user.setName("First Name Test" + number);
         user.setBirth_day(new Date());
         user.setGender(((number % 2) == 0) ? "Male" : "Female");
+        user.setId(number.longValue());
         user.setCreated_at(new Date());
         return user;
     }
