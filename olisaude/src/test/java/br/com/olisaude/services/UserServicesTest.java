@@ -5,7 +5,6 @@ import br.com.olisaude.data.vo.v1.UserVO;
 import br.com.olisaude.exceptions.RequiredObjectIsNullException;
 import br.com.olisaude.model.User;
 import br.com.olisaude.repositories.UserRepository;
-import br.com.olisaude.unittests.mapper.mocks.MockHealthProblem;
 import br.com.olisaude.unittests.mapper.mocks.MockUser;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

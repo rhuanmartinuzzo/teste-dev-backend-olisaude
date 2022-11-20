@@ -41,7 +41,7 @@ public class HealthProblemController {
                     @ApiResponse(description = "Internal Error", responseCode = "500", content = @Content)
             })
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<HealthProblemVO> findAll(){return service.findAllSI(); };
+    public List<HealthProblemVO> findAll(){return service.findAll(); };
 
 
     @Operation(summary = "Finds one HealthProblem", description = "Finds one HealthProblem",

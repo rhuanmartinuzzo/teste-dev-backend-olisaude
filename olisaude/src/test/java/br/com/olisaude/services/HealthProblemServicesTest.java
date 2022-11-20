@@ -2,10 +2,8 @@ package br.com.olisaude.services;
 
 
 import br.com.olisaude.data.vo.v1.HealthProblemVO;
-import br.com.olisaude.data.vo.v1.UserVO;
 import br.com.olisaude.exceptions.RequiredObjectIsNullException;
 import br.com.olisaude.model.HealthProblem;
-import br.com.olisaude.model.User;
 import br.com.olisaude.repositories.HealthProblemRepository;
 import br.com.olisaude.unittests.mapper.mocks.MockHealthProblem;
 import org.junit.jupiter.api.BeforeEach;
@@ -65,7 +63,7 @@ class HealthProblemServicesTest {
 
         when(repository.findAll()).thenReturn(list);
 
-        var people = service.findAllSI();
+        var people = service.findAll();
         assertNotNull(people);
         assertEquals(14, people.size());
 
@@ -165,8 +163,5 @@ class HealthProblemServicesTest {
 
         service.delete(1L);
     }
-
-
-
 
 }

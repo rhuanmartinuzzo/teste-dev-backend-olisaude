@@ -1,5 +1,16 @@
 ![Oli Saúde|100x397,20%](https://hs-7708371.f.hubspotfree.net/hub/7708371/hubfs/logo-olisaude.png?upscale=true&width=288&upscale=true&name=logo-olisaude.png)
 
+Steps:
+- [ ] Docker
+- [X] Database
+- [X] Controllers, services, data.
+- [X] API
+- [X] Tests
+- [ ] Documentation (Swagger/OpenAPI)
+- [ ] Postman
+
+
+
 # Backend Developer Challenge
 Este é um desafio simples para testar suas habilidades na construção de APIs.
 Os serviços da Oli usam principalmente tecnologias Kotlin e Springboot. No entanto, você pode usar qualquer linguagem e framework que lhe pareça mais confortável.

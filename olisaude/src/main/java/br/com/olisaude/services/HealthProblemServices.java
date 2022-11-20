@@ -27,7 +27,7 @@ public class HealthProblemServices {
         this.repository = repository;
     }
 
-    public List<HealthProblemVO> findAllSI(){
+    public List<HealthProblemVO> findAll(){
 
         logger.info("Finding all users");
 
