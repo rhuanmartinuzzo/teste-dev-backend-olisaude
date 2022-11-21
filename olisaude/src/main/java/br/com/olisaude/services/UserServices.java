@@ -124,7 +124,9 @@ public class UserServices {
             }
         });
 
-        return topTen.subList(0,10);
+
+        final int ten = 10;
+        return users.size() > ten ? topTen.subList(0,ten) : topTen.subList(0,users.size());
     }
 
 

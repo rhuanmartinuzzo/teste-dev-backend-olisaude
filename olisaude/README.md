@@ -2,11 +2,11 @@
 
 Steps:
 - [ ] Docker
-- [X] Database
+- [X] Database (Flyway)
 - [X] Controllers, services, data.
 - [X] API
 - [X] Tests
-- [ ] Documentation (Swagger/OpenAPI)
+- [X] Documentation (Swagger/OpenAPI)
 - [ ] Postman
 
 
