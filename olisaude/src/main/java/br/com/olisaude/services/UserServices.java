@@ -97,20 +97,21 @@ public class UserServices {
         logger.info("Finding top ten users!");
 
         List<HealthProblemTop> topTen = new ArrayList<>();
-        List<User> users = repository.findAll();
+        List<UserVO> users = DozerMapper.parseListObjects(repository.findAll(), UserVO.class);
         List<Integer> healthLevel = new ArrayList<>();
 
-        for (User user : users){
+        for (UserVO user : users){
             healthLevel.add(healthProblemServices
-                    .findAllById(user.getId())
+                    .findAllById(user.getKey())
                     .stream()
                     .reduce(0, (total, healthProblem) -> total + Math.toIntExact(healthProblem.getTier()), Integer::sum));
         }
 
+
         for (int index = 0; index < users.size(); index+=1) {
             HealthProblemTop newHealthProblemTop = new HealthProblemTop();
-            User userFromList = users.get(index);
-            newHealthProblemTop.setId(userFromList.getId());
+            UserVO userFromList = users.get(index);
+            newHealthProblemTop.setId(userFromList.getKey());
             newHealthProblemTop.setName(userFromList.getName());
             newHealthProblemTop.setScore((float) healthProblemUtils.scoreRisk(healthLevel.get(index)));
 
