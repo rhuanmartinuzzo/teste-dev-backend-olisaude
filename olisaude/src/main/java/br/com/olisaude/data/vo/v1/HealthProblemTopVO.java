@@ -1,18 +1,29 @@
-package br.com.olisaude.model;
+package br.com.olisaude.data.vo.v1;
 
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import com.github.dozermapper.core.Mapping;
+
 import java.io.Serializable;
 import java.util.Objects;
 
-@Entity
-public class HealthProblemTop implements Serializable {
 
-    @Id
-    private Long id;
+public class HealthProblemTopVO implements Serializable {
+
+
+    @Mapping("id")
+    private Long key;
     private String name;
     private Float score;
+
+    public HealthProblemTopVO(){}
+
+    public Long getKey() {
+        return key;
+    }
+
+    public void setKey(Long key) {
+        this.key = key;
+    }
 
     public String getName() {
         return name;
@@ -20,14 +31,6 @@ public class HealthProblemTop implements Serializable {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public Float getScore() {
@@ -41,16 +44,16 @@ public class HealthProblemTop implements Serializable {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof HealthProblemTop that)) return false;
+        if (!(o instanceof HealthProblemTopVO that)) return false;
 
-        if (!Objects.equals(id, that.id)) return false;
+        if (!Objects.equals(key, that.key)) return false;
         if (!Objects.equals(name, that.name)) return false;
         return Objects.equals(score, that.score);
     }
 
     @Override
     public int hashCode() {
-        int result = id != null ? id.hashCode() : 0;
+        int result = key != null ? key.hashCode() : 0;
         result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + (score != null ? score.hashCode() : 0);
         return result;

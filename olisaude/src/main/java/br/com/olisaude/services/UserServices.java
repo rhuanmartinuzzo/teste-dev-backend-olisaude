@@ -2,6 +2,7 @@ package br.com.olisaude.services;
 
 
 import br.com.olisaude.controllers.UserController;
+import br.com.olisaude.data.vo.v1.HealthProblemTopVO;
 import br.com.olisaude.data.vo.v1.UserVO;
 import br.com.olisaude.exceptions.RequiredObjectIsNullException;
 import br.com.olisaude.exceptions.ResourceNotFoundException;
@@ -92,11 +93,11 @@ public class UserServices {
         repository.delete(entity);
     }
 
-    public List<HealthProblemTop> findTopTen(){
+    public List<HealthProblemTopVO> findTopTen(){
 
         logger.info("Finding top ten users!");
 
-        List<HealthProblemTop> topTen = new ArrayList<>();
+        List<HealthProblemTopVO> topTen = new ArrayList<>();
         List<UserVO> users = DozerMapper.parseListObjects(repository.findAll(), UserVO.class);
         List<Integer> healthLevel = new ArrayList<>();
 
@@ -109,18 +110,18 @@ public class UserServices {
 
 
         for (int index = 0; index < users.size(); index+=1) {
-            HealthProblemTop newHealthProblemTop = new HealthProblemTop();
+            HealthProblemTopVO newHealthProblemTop = new HealthProblemTopVO();
             UserVO userFromList = users.get(index);
-            newHealthProblemTop.setId(userFromList.getKey());
+            newHealthProblemTop.setKey(userFromList.getKey());
             newHealthProblemTop.setName(userFromList.getName());
             newHealthProblemTop.setScore((float) healthProblemUtils.scoreRisk(healthLevel.get(index)));
 
             topTen.add(newHealthProblemTop);
         }
 
-        Collections.sort(topTen, new Comparator<HealthProblemTop>() {
+        Collections.sort(topTen, new Comparator<HealthProblemTopVO>() {
             @Override
-            public int compare(HealthProblemTop o1, HealthProblemTop o2) {
+            public int compare(HealthProblemTopVO o1, HealthProblemTopVO o2) {
                 return o2.getScore().compareTo(o1.getScore());
             }
         });

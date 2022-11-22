@@ -1,6 +1,7 @@
 package br.com.olisaude.controllers;
 
 
+import br.com.olisaude.data.vo.v1.HealthProblemTopVO;
 import br.com.olisaude.data.vo.v1.UserVO;
 import br.com.olisaude.model.HealthProblemTop;
 import br.com.olisaude.services.UserServices;
@@ -125,5 +126,5 @@ public class UserController {
                     @ApiResponse(description = "Internal Error", responseCode = "500", content = @Content)
             })
     @GetMapping(value = "/topten")
-    public List<HealthProblemTop> findTopTen(){ return service.findTopTen();};
+    public List<HealthProblemTopVO> findTopTen(){ return service.findTopTen();};
 }
