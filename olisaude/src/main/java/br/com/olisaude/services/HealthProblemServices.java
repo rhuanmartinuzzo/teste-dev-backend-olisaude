@@ -11,21 +11,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
-import java.util.Collections;
 import java.util.List;
 import java.util.logging.Logger;
+
+
 
 @Service
 public class HealthProblemServices {
     
     private Logger logger  = Logger.getLogger(HealthProblemServices.class.getName());
 
-    @Autowired
-    HealthProblemRepository repository;
 
-    public HealthProblemServices(HealthProblemRepository repository){
+    private final HealthProblemRepository repository;
+    @Autowired
+    private HealthProblemServices(HealthProblemRepository repository) {
         this.repository = repository;
     }
+
 
     public List<HealthProblemVO> findAll(){
 

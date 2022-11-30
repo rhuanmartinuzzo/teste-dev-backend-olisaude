@@ -2,15 +2,14 @@ package br.com.olisaude.controllers;
 
 
 import br.com.olisaude.data.vo.v1.HealthProblemTopVO;
+import br.com.olisaude.data.vo.v1.UserProblemVO;
 import br.com.olisaude.data.vo.v1.UserVO;
-import br.com.olisaude.model.HealthProblemTop;
 import br.com.olisaude.services.UserServices;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
-import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -127,4 +126,19 @@ public class UserController {
             })
     @GetMapping(value = "/topten")
     public List<HealthProblemTopVO> findTopTen(){ return service.findTopTen();};
+
+
+    @Operation(summary = "Finds User and problems",
+            description = "Finds User and problems by passing in a JSON representation of the users!",
+            tags = {"User"},
+            responses = {
+                    @ApiResponse(description = "No content", responseCode = "204", content = @Content),
+                    @ApiResponse(description = "Bad Request", responseCode = "400", content = @Content),
+                    @ApiResponse(description = "Unauthorized", responseCode = "401", content = @Content),
+                    @ApiResponse(description = "Not Found", responseCode = "404", content = @Content),
+                    @ApiResponse(description = "Internal Error", responseCode = "500", content = @Content)
+            })
+    @GetMapping(value = "/User/{id}")
+    public UserProblemVO findUserandProblems(@PathVariable (value = "id" ) Long id){ return service.findUserandProblems(id);};
+
 }

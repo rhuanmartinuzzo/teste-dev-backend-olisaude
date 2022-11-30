@@ -4,13 +4,15 @@ package br.com.olisaude.data.vo.v1;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.github.dozermapper.core.Mapping;
+import org.springframework.stereotype.Component;
 
 import javax.persistence.Column;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.Objects;
-import java.util.stream.DoubleStream;
+
+
 
 @JsonPropertyOrder({"id", "name", "tier", "user_id"})
 public class HealthProblemVO implements Serializable {

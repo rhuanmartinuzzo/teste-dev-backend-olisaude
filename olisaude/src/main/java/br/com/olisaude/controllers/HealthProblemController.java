@@ -3,7 +3,6 @@ package br.com.olisaude.controllers;
 
 import br.com.olisaude.data.vo.v1.HealthProblemVO;
 import br.com.olisaude.services.HealthProblemServices;
-import br.com.olisaude.services.UserServices;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -22,8 +21,12 @@ import java.util.List;
 @Tag(name = "HealthProblems", description = "Endpoint for managing HealthProblems")
 public class HealthProblemController {
 
+    private final HealthProblemServices service;
+
     @Autowired
-    private HealthProblemServices service;
+    public HealthProblemController(HealthProblemServices service) {
+        this.service = service;
+    }
 
     @Operation(summary = "Finds all HealthProblems", description = "Finds all HealthProblems",
             tags = {"HealthProblems"},

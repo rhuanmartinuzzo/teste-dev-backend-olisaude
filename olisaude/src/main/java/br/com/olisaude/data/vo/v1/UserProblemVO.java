@@ -9,15 +9,14 @@ import java.util.Objects;
 
 
 @Component
-public class HealthProblemTopVO implements Serializable {
-
+public class UserProblemVO implements Serializable {
 
     @Mapping("id")
     private Long key;
-    private String name;
-    private Float score;
 
-    public HealthProblemTopVO(){}
+    private String name;
+
+    private String problems;
 
     public Long getKey() {
         return key;
@@ -35,29 +34,29 @@ public class HealthProblemTopVO implements Serializable {
         this.name = name;
     }
 
-    public Float getScore() {
-        return score;
+    public String getProblems() {
+        return problems;
     }
 
-    public void setScore(Float score) {
-        this.score = score;
+    public void setProblems(String problems) {
+        this.problems = problems;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof HealthProblemTopVO that)) return false;
+        if (!(o instanceof UserProblemVO that)) return false;
 
         if (!Objects.equals(key, that.key)) return false;
         if (!Objects.equals(name, that.name)) return false;
-        return Objects.equals(score, that.score);
+        return Objects.equals(problems, that.problems);
     }
 
     @Override
     public int hashCode() {
         int result = key != null ? key.hashCode() : 0;
         result = 31 * result + (name != null ? name.hashCode() : 0);
-        result = 31 * result + (score != null ? score.hashCode() : 0);
+        result = 31 * result + (problems != null ? problems.hashCode() : 0);
         return result;
     }
 }

@@ -4,6 +4,7 @@ Steps:
 - [ ] Docker
 - [X] Database (Flyway)
 - [X] Controllers, services, data.
+- [ ] Pagination
 - [X] API
 - [X] Tests
 - [X] Documentation (Swagger/OpenAPI)

@@ -4,8 +4,7 @@ package br.com.olisaude.data.vo.v1;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.github.dozermapper.core.Mapping;
-import org.springframework.hateoas.RepresentationModel;
-
+import org.springframework.stereotype.Component;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
@@ -13,6 +12,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
 
+@Component
 @JsonPropertyOrder({"id", "name", "birth_day", "gender", "created_at", "updated_at"})
 public class UserVO implements Serializable {
 

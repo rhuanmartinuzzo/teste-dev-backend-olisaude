@@ -1,42 +1,47 @@
 package br.com.olisaude.services;
 
 
-import br.com.olisaude.controllers.UserController;
 import br.com.olisaude.data.vo.v1.HealthProblemTopVO;
+import br.com.olisaude.data.vo.v1.HealthProblemVO;
+import br.com.olisaude.data.vo.v1.UserProblemVO;
 import br.com.olisaude.data.vo.v1.UserVO;
 import br.com.olisaude.exceptions.RequiredObjectIsNullException;
 import br.com.olisaude.exceptions.ResourceNotFoundException;
 import br.com.olisaude.mapper.DozerMapper;
-import br.com.olisaude.model.HealthProblemTop;
 import br.com.olisaude.model.User;
+import br.com.olisaude.repositories.HealthProblemRepository;
 import br.com.olisaude.repositories.UserRepository;
 import br.com.olisaude.util.HealthProblemUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
 import java.util.logging.Logger;
 
-import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
-import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
-
 @Service
-public class UserServices {
+@Component
+public class UserServices{
 
     private Logger logger = Logger.getLogger(UserServices.class.getName());
 
 
     @Autowired
-    UserRepository repository;
+    private UserRepository repository;
     @Autowired
-    HealthProblemServices healthProblemServices;
+    private HealthProblemRepository repositoryHealth;
     @Autowired
-    HealthProblemUtils healthProblemUtils;
+    private HealthProblemServices healthProblemServices;
+    @Autowired
+    private HealthProblemUtils healthProblemUtils;
 
-    public UserServices(UserRepository repository, HealthProblemServices healthProblemServices, HealthProblemUtils healthProblemUtils){
+
+    private UserServices(UserRepository repository, HealthProblemServices healthProblemServices, HealthProblemUtils healthProblemUtils,HealthProblemRepository repositoryHealth ){
         this.repository = repository;
         this.healthProblemServices = healthProblemServices;
         this.healthProblemUtils = healthProblemUtils;
+        this.repositoryHealth = repositoryHealth;
     }
 
     public List<UserVO> findAll(){
@@ -129,6 +134,32 @@ public class UserServices {
 
         final int ten = 10;
         return users.size() > ten ? topTen.subList(0,ten) : topTen.subList(0,users.size());
+    }
+
+    public UserProblemVO findUserandProblems(Long id){
+
+        logger.info("Testando");
+        var entity = repository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("No records found for this ID!"));
+        var vo = DozerMapper.parseObject(entity, UserVO.class);
+
+        List<String> problems = new ArrayList<>();
+
+        UserProblemVO user = new UserProblemVO();
+        user.setKey(id);
+        user.setName(vo.getName());
+
+        List<HealthProblemVO> healthproblems = DozerMapper.parseListObjects(repositoryHealth.findAll(), HealthProblemVO.class);
+        for(HealthProblemVO healthproblem : healthproblems){
+            if(healthproblem.getUser_id() == id){
+                problems.add(healthproblem.getName());
+            }
+        }
+
+        String finaltestee = String.join(", ", problems);
+
+        user.setProblems(finaltestee);
+        return user;
     }
 
 

@@ -1,12 +1,10 @@
 package br.com.olisaude.mapper;
 
-import br.com.olisaude.data.vo.v1.HealthProblemVO;
 import com.github.dozermapper.core.DozerBeanMapperBuilder;
 import com.github.dozermapper.core.Mapper;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 public class DozerMapper {
 
