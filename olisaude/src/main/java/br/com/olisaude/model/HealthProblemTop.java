@@ -1,12 +1,11 @@
 package br.com.olisaude.model;
 
 
-import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.io.Serializable;
 import java.util.Objects;
 
-@Entity
+
 public class HealthProblemTop implements Serializable {
 
     @Id

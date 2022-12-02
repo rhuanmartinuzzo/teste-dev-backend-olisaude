@@ -8,7 +8,7 @@ import java.io.Serializable;
 import java.util.Objects;
 
 
-@Component
+
 public class UserProblemVO implements Serializable {
 
     @Mapping("id")

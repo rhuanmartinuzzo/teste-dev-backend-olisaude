@@ -12,7 +12,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
 
-@Component
+
 @JsonPropertyOrder({"id", "name", "birth_day", "gender", "created_at", "updated_at"})
 public class UserVO implements Serializable {
 

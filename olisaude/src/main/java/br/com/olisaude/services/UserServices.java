@@ -21,7 +21,6 @@ import java.util.*;
 import java.util.logging.Logger;
 
 @Service
-@Component
 public class UserServices{
 
     private Logger logger = Logger.getLogger(UserServices.class.getName());
@@ -31,9 +30,7 @@ public class UserServices{
     private UserRepository repository;
     @Autowired
     private HealthProblemRepository repositoryHealth;
-    @Autowired
     private HealthProblemServices healthProblemServices;
-    @Autowired
     private HealthProblemUtils healthProblemUtils;
 
 

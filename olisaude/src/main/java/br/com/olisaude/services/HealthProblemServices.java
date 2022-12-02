@@ -21,9 +21,9 @@ public class HealthProblemServices {
     
     private Logger logger  = Logger.getLogger(HealthProblemServices.class.getName());
 
-
-    private final HealthProblemRepository repository;
     @Autowired
+    public HealthProblemRepository repository;
+
     private HealthProblemServices(HealthProblemRepository repository) {
         this.repository = repository;
     }

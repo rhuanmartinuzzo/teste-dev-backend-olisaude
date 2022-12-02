@@ -1,12 +1,10 @@
 package br.com.olisaude.model;
 
 
-import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.io.Serializable;
 import java.util.Objects;
 
-@Entity
 public class UserProblem implements Serializable {
 
     @Id

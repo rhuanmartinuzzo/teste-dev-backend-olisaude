@@ -10,9 +10,7 @@ import org.springframework.stereotype.Service;
 import javax.persistence.Entity;
 
 
-@SpringBootApplication()
-@EnableJpaRepositories(basePackages = "br.com.olisaude.repositories")
-@EntityScan(basePackages = "br.com.olisaude.model")
+@SpringBootApplication
 public class Startup {
 
     public static void main(String[] args) {
